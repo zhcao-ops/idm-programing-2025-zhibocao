@@ -471,7 +471,7 @@ button:hover {
   max-width: 360px;
   margin: 0 auto 1rem;
   position: relative;
-  padding-top: 177.78%; /* 9:16 */
+  aspect-ratio: 3 / 5;
   background: #000;
   border-radius: 10px;
   overflow: hidden;
