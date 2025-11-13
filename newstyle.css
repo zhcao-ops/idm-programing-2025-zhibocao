@@ -200,36 +200,47 @@ header h1 {
 /* ========== About Page ========== */
 
 .about {
-  padding: 150px 10%;
-  min-height: calc(100vh - 100px);
+    padding: 150px 10%;
+    background-color: #000;
 }
 
-.about-content {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  gap: 40px;
-  flex-wrap: wrap;
+.about-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 40px;
+    flex-wrap: wrap; /* 允许自动换行 */
 }
 
-.about-img {
-  max-width: 350px;
+.about-image {
+    flex: 1;
+    min-width: 280px;
+}
+
+.about-image img {
+    width: 100%;
+    height: auto;  /* ⭐保持图片原比例，解决变形 */
+    border-radius: 12px;
+    object-fit: cover;
 }
 
 .about-text {
-  max-width: 500px;
+    flex: 1;
+    min-width: 280px;
 }
 
 .about-text h2 {
-  margin-bottom: 20px;
-  font-size: 48px;
+    font-size: 48px;
+    color: #fff;
+    margin-bottom: 20px;
 }
 
 .about-text p {
-  margin-bottom: 15px;
-  line-height: 1.6;
-  font-size: 18px;
+    color: #fff;
+    font-size: 18px;
+    line-height: 1.7;
+    margin-bottom: 15px;
 }
+
 
 /* ========== Contact Page ========== */
 
