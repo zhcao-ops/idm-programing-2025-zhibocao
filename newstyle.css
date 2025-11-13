@@ -602,3 +602,83 @@ footer p {
     height: 100%;
     border: none;
 }
+/* === DOCUMENTARY PAGE REWORK === */
+
+.documentary-title {
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-top: 120px;
+    letter-spacing: 3px;
+}
+
+.documentary-subtitle {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin: 2.5rem 0 1.5rem 0;
+    letter-spacing: 2px;
+}
+
+.doc-description {
+    max-width: 900px;
+    margin: 2.5rem auto;
+    padding: 2rem;
+    background: rgba(255,255,255,0.08);
+    border-radius: 12px;
+    line-height: 1.8;
+    font-size: 1.15rem;
+    color: #e6e6e6;
+}
+
+.doc-description p {
+    margin-bottom: 1.2rem;
+}
+
+/* Images */
+.doc-top-image,
+.doc-bottom-image {
+    max-width: 1000px;
+    margin: 2rem auto;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.35);
+}
+
+.doc-top-image img,
+.doc-bottom-image img {
+    width: 100%;
+    display: block;
+}
+
+/* Video container */
+/* 强制视频模块整体居中 */
+.video-center {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 3rem;
+}
+
+/* 视频大小与样式 */
+.doc-video-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    padding-top: 56.25%;
+    background: #000;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+
+.doc-video-wrapper iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
