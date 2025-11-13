@@ -5,7 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Scarlet Witch Edition - Allen C Portfolio</title>
     <link rel="stylesheet" href="newstyle.css">
+
+    <!-- 只给本页面的视频区域用的样式，避免被其他 CSS 干扰 -->
+    <style>
+      .video-section {
+        background-color: #ffffff;
+        border-radius: 8px;
+        padding: 2rem;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        text-align: center;
+      }
+
+      .video-wrapper {
+        position: relative;
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto 1rem auto;
+        padding-top: 56.25%; /* 16:9 */
+        background: #000;
+        border-radius: 10px;
+        overflow: hidden;
+      }
+
+      .video-wrapper iframe {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+        display: block;
+      }
+
+      .video-caption {
+        font-size: 0.9rem;
+        color: #666;
+        margin-top: 0.5rem;
+      }
+    </style>
 </head>
+
 <body>
     <header>
     <h1>ALLEN C</h1>
@@ -28,14 +66,22 @@
         <h1 class="page-title">SCARLET WITCH SHORT VIDEO EDITING</h1>
         
         <div class="content-layout">
-            <div class="video-section">
-                <div class="vertical-video">
-                    <video controls poster="images/图片11.jpg">
-                      <source src="videos/scarletwitch.mp4" type="video/mp4">
-                     </video>
-                </div>
-                <p class="video-caption">Scarlet Witch Secondary Creation Editing</p>
-            </div>
+            <div class="content-layout">
+    <div class="video-section">
+        <div class="video-wrapper">
+            <iframe
+              src="https://www.youtube.com/embed/dKO03R0am7M"
+              title="Video Editing Showcase"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+              referrerpolicy="strict-origin-when-cross-origin">
+            </iframe>
+        </div>
+        <p class="video-caption">Scarlet Witch Secondary Creation Editing</p>
+    </div>
+    
+    
+
             
             <div class="content-section">
                 <div class="image-container">
@@ -65,5 +111,5 @@
         <p>WEBSITE: www.allenc.com | EMAIL: zhcao@tcd.ie | LOCATION: DUBLIN, IRELAND</p>
     </footer>
 </body>
-</html>>
+</html>
 
