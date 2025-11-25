@@ -18,13 +18,15 @@ function setupHeaderScrollEffect() {
 
 // 用一个类来表示作品（OOP 示例）
 class Project {
-  constructor(title, type, image, link) {
+  constructor(title, type, image, link, description) {
     this.title = title;
     this.type = type;
     this.image = image;
     this.link = link;
+    this.description = description;
   }
 }
+
 
 // 用数组保存你的作品数据（数据与代码分离）
 const projectsData = [
@@ -32,47 +34,55 @@ const projectsData = [
     "FIGHTBOYS",
     "FILM PRODUCTION",
     "images/图片3.png",
-    "film.html"
+    "film.html",
+    "A campus action film about self-discovery and fighting inner demons."
   ),
   new Project(
     "STARLIGHT",
     "DOCUMENTARY",
     "images/2.jpg",
-    "documentary.html"
+    "documentary.html",
+    "A micro-documentary following three fitness enthusiasts on their journeys."
   ),
   new Project(
     "SCARLET WITCH EDITING",
     "REELS EDITION",
     "images/1.jpg",
-    "video editing.html"
+    "video editing.html",
+    "A fan-made edit that reimagines Wanda Maximoff with dynamic rhythm and style."
   )
 ];
+
 
 // ========= 2. 函数：渲染首页 gallery =========
 
 function renderHomeProjects() {
-  // 只在 index.html 执行：通过检测 .gallery 是否存在
   const gallery = document.querySelector(".gallery");
   if (!gallery) return;
 
-  // 清空原来写死的 HTML
   gallery.innerHTML = "";
 
-  // 根据数据循环创建卡片
   projectsData.forEach((project) => {
     const card = document.createElement("div");
     card.className = "card";
 
     card.innerHTML = `
-      <a href="${project.link}">
-        <img src="${project.image}" alt="${project.title}">
-        <p>${project.type}</p>
+      <a href="${project.link}" class="card-link">
+        <div class="card-image-wrapper">
+          <img src="${project.image}" alt="${project.title}">
+          <div class="card-overlay">
+            <h3>${project.title}</h3>
+            <p>${project.description}</p>
+          </div>
+        </div>
+        <p class="card-type">${project.type}</p>
       </a>
     `;
 
     gallery.appendChild(card);
   });
 }
+
 
 // ========= 3. Contact 页面：表单验证 =========
 
