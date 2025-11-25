@@ -211,6 +211,14 @@ function setupScrollReveal() {
   elements.forEach((el) => observer.observe(el));
 }
 
+// ========= 7. 自动更新页脚年份 =========
+function setupFooterYear() {
+  const yearSpan = document.getElementById("current-year");
+  if (!yearSpan) return;
+  yearSpan.textContent = new Date().getFullYear();
+}
+
+
 // ========= 5. 页面加载完后统一初始化 =========
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -219,5 +227,6 @@ document.addEventListener("DOMContentLoaded", () => {
   setupBackToTopButton();
   setupHeaderScrollEffect();
   setupScrollReveal();
+  setupFooterYear();
 });
 
