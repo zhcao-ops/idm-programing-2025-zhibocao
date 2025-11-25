@@ -1,5 +1,19 @@
 // main.js
 
+// ========= 0. Header 滚动变色效果 =========
+function setupHeaderScrollEffect() {
+  const header = document.querySelector("header");
+  if (!header) return; // 安全防护
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 50) {
+      header.classList.add("scrolled");
+    } else {
+      header.classList.remove("scrolled");
+    }
+  });
+}
+
 // ========= 1. 数据 & OOP：作品信息 =========
 
 // 用一个类来表示作品（OOP 示例）
@@ -143,5 +157,6 @@ document.addEventListener("DOMContentLoaded", () => {
   renderHomeProjects();
   setupContactFormValidation();
   setupBackToTopButton();
+  setupHeaderScrollEffect();
 });
 
