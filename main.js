@@ -1,9 +1,9 @@
 // main.js
 
-// ========= 0. Header 滚动变色效果 =========
+// ========= 0. Header Scrolling color change effect =========
 function setupHeaderScrollEffect() {
   const header = document.querySelector("header");
-  if (!header) return; // 安全防护
+  if (!header) return; // security denfense
 
   window.addEventListener("scroll", () => {
     if (window.scrollY > 50) {
@@ -14,9 +14,9 @@ function setupHeaderScrollEffect() {
   });
 }
 
-// ========= 1. 数据 & OOP：作品信息 =========
+// ========= 1. date & OOP：works info =========
 
-// 用一个类来表示作品（OOP 示例）
+// Use a class to represent a work (OOP example)
 class Project {
   constructor(title, type, image, link, description) {
     this.title = title;
@@ -28,7 +28,7 @@ class Project {
 }
 
 
-// 用数组保存你的作品数据（数据与代码分离）
+// Use an array to save your work data (separate data from code)
 const projectsData = [
   new Project(
     "FIGHTBOYS",
@@ -54,7 +54,7 @@ const projectsData = [
 ];
 
 
-// ========= 2. 函数：渲染首页 gallery =========
+// ========= 2. Function: Render Home Page gallery =========
 
 function renderHomeProjects() {
   const gallery = document.querySelector(".gallery");
@@ -84,14 +84,14 @@ function renderHomeProjects() {
 }
 
 
-// ========= 3. Contact 页面：表单验证 =========
+// ========= 3. Contact Page: Form Validation =========
 
 function setupContactFormValidation() {
-  // 只在 CONTACT 页面执行
+  // Only execute on the CONTACT page
   const form = document.querySelector("form");
   if (!form) return;
 
-  // 创建错误信息容器
+  // Create an error message container
   let errorBox = document.querySelector(".form-error");
   if (!errorBox) {
     errorBox = document.createElement("div");
@@ -110,7 +110,7 @@ function setupContactFormValidation() {
       errors.push("Please enter your name.");
     }
 
-    // 简单 email 格式检测
+    // Simple email format check
     const emailValue = emailInput.value.trim();
     if (!emailValue) {
       errors.push("Please enter your email.");
@@ -123,17 +123,17 @@ function setupContactFormValidation() {
     }
 
     if (errors.length > 0) {
-      event.preventDefault(); // 阻止真正提交
+      event.preventDefault(); // prevent form submission
       errorBox.innerHTML = errors.map((e) => `<p>${e}</p>`).join("");
       errorBox.style.display = "block";
     } else {
-      // 简单提示一下（实际提交会刷新页面）
+      // simply hint（refresh page when submitted）
       alert("Thank you! Your message has been sent.");
     }
   });
 }
 
-// ========= 4. 回到顶部按钮 =========
+// ========= 4. button of back-to-top =========
 
 function setupBackToTopButton() {
   const btn = document.createElement("button");
@@ -142,7 +142,7 @@ function setupBackToTopButton() {
 
   document.body.appendChild(btn);
 
-  // 初始隐藏
+  // initially hidden
   btn.style.display = "none";
 
   window.addEventListener("scroll", () => {
@@ -161,22 +161,22 @@ function setupBackToTopButton() {
   });
 }
 
-// ========= 6. Scroll Reveal 动画 =========
+// ========= 6. Scroll Reveal animation =========
 function setupScrollReveal() {
-  // 选择需要淡入动画的元素（可以按需再加）
+  // Select the elements that need a fade-in animation (you can add more as needed)
   const selectors = [
-    ".gallery .card",          // 首页作品卡片
-    ".about-text",             // About 文本块
-    ".about-image",            // About 图片
-    ".project-container",      // Film 页主容器
-    ".description-section",    // Film 右侧描述
-    ".media-section",          // Film 左侧媒体
-    ".doc-description",        // Documentary 文本卡片
+    ".gallery .card",          // main gallery cards
+    ".about-text",             // About text block
+    ".about-image",            // About imgage
+    ".project-container",      // Film main container
+    ".description-section",    // Film description on the right
+    ".media-section",          // Film media area on the left
+    ".doc-description",        // Documentary text card
     ".doc-top-image",
     ".doc-bottom-image",
-    ".video-center",           // Documentary 视频区域
-    ".content-section",        // Video editing 页面右侧内容
-    ".video-section-edit"      // Video editing 视频区域
+    ".video-center",           // Documentary video area
+    ".content-section",        // Video editing content area on the right
+    ".video-section-edit"      // Video editing video area
   ];
 
   const elements = [];
@@ -189,7 +189,7 @@ function setupScrollReveal() {
   });
 
   if (!("IntersectionObserver" in window) || elements.length === 0) {
-    // 兼容性防护：如果观察器不可用，直接全部显示
+    // Compatibility protection: If the observer is unavailable, display everything directly
     elements.forEach((el) => el.classList.add("reveal-visible"));
     return;
   }
@@ -199,7 +199,7 @@ function setupScrollReveal() {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add("reveal-visible");
-          obs.unobserve(entry.target); // 只动画一次，避免反复闪动
+          obs.unobserve(entry.target); // Animate only once to avoid repeated flashing
         }
       });
     },
@@ -211,7 +211,7 @@ function setupScrollReveal() {
   elements.forEach((el) => observer.observe(el));
 }
 
-// ========= 7. 自动更新页脚年份 =========
+// ========= 7. automatically update footeryear =========
 function setupFooterYear() {
   const yearSpan = document.getElementById("current-year");
   if (!yearSpan) return;
@@ -219,7 +219,7 @@ function setupFooterYear() {
 }
 
 
-// ========= 5. 页面加载完后统一初始化 =========
+// ========= B. Initialize uniformly after the page has loaded =========
 
 document.addEventListener("DOMContentLoaded", () => {
   renderHomeProjects();

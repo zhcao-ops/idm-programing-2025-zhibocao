@@ -18,7 +18,7 @@ body {
   line-height: 1.6;
 }
 
-/* 通用链接样式 */
+/* universal link style */
 a {
   color: inherit;
   text-decoration: none;
@@ -28,13 +28,13 @@ a:hover {
   text-decoration: underline;
 }
 
-/* 图片默认自适应 */
+/* image defaults to auto-fit */
 img {
   max-width: 100%;
   display: block;
 }
 
-/* 布局辅助容器 */
+/* layout helper container */
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -119,7 +119,7 @@ header h1 {
   display: block;
 }
 
-/* 所有主内容区给 header 腾出空间 */
+/* Give the header space in all main content areas */
 .info,
 .about,
 .contact,
@@ -165,7 +165,7 @@ header h1 {
   color: inherit;
 }
 
-/* 首页卡片廊 */
+/* mainpage card gallery */
 .gallery {
   display: flex;
   justify-content: center;
@@ -188,7 +188,7 @@ header h1 {
   box-shadow: 0 8px 18px rgba(0, 0, 0, 0.6);
 }
 
-/* 图片容器，作为遮罩的定位基础 */
+/* Image container, serving as the positioning basis for the mask */
 .card-image-wrapper {
   position: relative;
   width: 100%;
@@ -196,7 +196,7 @@ header h1 {
   overflow: hidden;
 }
 
-/* 图片本身允许微缩放 */
+/* The image itself allows zooming in and out */
 .card-image-wrapper img {
   width: 100%;
   height: 100%;
@@ -204,12 +204,12 @@ header h1 {
   transition: transform 0.4s ease;
 }
 
-/* 悬停时图片微微放大一点点 */
+/* zoom out, hover */
 .card:hover .card-image-wrapper img {
   transform: scale(1.07);
 }
 
-/* 遮罩层：默认隐藏（透明） */
+/* Mask layer: hidden by default (transparent) */
 .card-overlay {
   position: absolute;
   inset: 0;
@@ -224,7 +224,7 @@ header h1 {
   transition: opacity 0.4s ease;
 }
 
-/* 遮罩里的文字样式 */
+/* Text style in the mask */
 .card-overlay h3 {
   font-size: 16px;
   margin-bottom: 4px;
@@ -235,12 +235,12 @@ header h1 {
   line-height: 1.4;
 }
 
-/* 悬停时显示遮罩 */
+/* Show overlay on hover */
 .card:hover .card-overlay {
   opacity: 1;
 }
 
-/* 类型文字（下面那行）单独加个 class */
+/* Add a separate class to the type text (the line below) */
 .card-type {
   padding: 10px;
   font-weight: bold;
@@ -270,7 +270,7 @@ header h1 {
     display: flex;
     align-items: flex-start;
     gap: 40px;
-    flex-wrap: wrap; /* 允许自动换行 */
+    flex-wrap: wrap; /* Allow word wrap */
 }
 
 .about-image {
@@ -280,7 +280,7 @@ header h1 {
 
 .about-image img {
     width: 100%;
-    height: auto;  /* ⭐保持图片原比例，解决变形 */
+    height: auto;  /* Maintain the original aspect ratio of the image to prevent distortion */
     border-radius: 12px;
     object-fit: cover;
 }
@@ -388,7 +388,7 @@ button:hover {
   gap: 1.5rem;
 }
 
-/* 通用 16:9 视频盒（用于 Fightboys） */
+/* 16:9 videobox（for Fightboys） */
 .main-video .video-box {
   position: relative;
   width: 100%;
@@ -406,7 +406,7 @@ button:hover {
   border: 0;
 }
 
-/* 四宫格剧照 */
+/* Four-panel stills */
 .image-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -420,7 +420,7 @@ button:hover {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
 }
 
-/* Film 右侧文本区 */
+/* Film Right text area */
 .description-section {
   flex: 1;
   min-width: 280px;
@@ -538,7 +538,7 @@ button:hover {
   text-align: center;
 }
 
-/* 竖屏 Shorts 播放器 */
+/* Vertical Shorts Player */
 .vertical-wrapper {
   width: 100%;
   max-width: 360px;
@@ -564,7 +564,7 @@ button:hover {
   color: #666;
 }
 
-/* Video editing 右侧图 + 文案 */
+/* Video editing Right-side image + text */
 .content-section {
   flex: 1;
   min-width: 260px;
@@ -660,7 +660,7 @@ footer p {
 .doc-video-wrapper {
     position: relative;
     width: 100%;
-    max-width: 900px; /* 可改为 700–1000 之间，看你页面风格 */
+    max-width: 900px; /* bewteen 700–1000 */
     padding-top: 56.25%; /* 16:9 */
     background: #000;
     border-radius: 12px;
@@ -727,7 +727,7 @@ footer p {
 }
 
 /* Video container */
-/* 强制视频模块整体居中 */
+/* Force the video module to be centered */
 .video-center {
     width: 100%;
     display: flex;
@@ -735,7 +735,7 @@ footer p {
     margin-bottom: 3rem;
 }
 
-/* 视频大小与样式 */
+/* Video size and style */
 .doc-video-wrapper {
     position: relative;
     width: 100%;
@@ -756,20 +756,20 @@ footer p {
 }
 
 /* ========== Scrolled Header Effect ========== */
-/* 让导航在滚动时有明显变化 */
+/* Make the navigation change noticeably when scrolling */
 header {
   background-color: #240303;
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* 下滑之后的导航样式 */
+/* Navigation style after scrolling down */
 header.scrolled {
-  background-color: rgba(10, 0, 0, 0.9); /* 更深一点、带透明 */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.7); /* 加阴影 */
-  backdrop-filter: blur(6px); /* 有毛玻璃效果（支持的浏览器） */
+  background-color: rgba(10, 0, 0, 0.9); /* A bit deeper, with transparency */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.7); /* shadow */
+  backdrop-filter: blur(6px); /* With frosted glass effect (supported browsers) */
 }
 
-/* Contact 表单错误信息样式 */
+/* Contact Form Error Message Style */
 .form-error {
   background-color: rgba(255, 0, 0, 0.1);
   color: #ffcccc;
@@ -780,7 +780,7 @@ header.scrolled {
   font-size: 14px;
 }
 
-/* 回到顶部按钮样式 */
+/* back-to-top */
 #back-to-top {
   position: fixed;
   right: 20px;
@@ -800,7 +800,7 @@ header.scrolled {
   background-color: #400000;
 }
 
-/* === Scroll Reveal 动画基础样式 === */
+/* === Scroll Reveal Basic Animation Style === */
 
 .reveal-on-scroll {
   opacity: 0;
@@ -810,13 +810,13 @@ header.scrolled {
     transform 0.6s ease-out;
 }
 
-/* 元素进入视口后添加 .reveal-visible */
+/* Add when the element enters the viewport .reveal-visible */
 .reveal-on-scroll.reveal-visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* 可以给首页卡片稍微延迟，让感觉更柔和 */
+/* smoother */
 .gallery .card.reveal-on-scroll {
   transition-delay: 0.05s;
 }
