@@ -161,6 +161,56 @@ function setupBackToTopButton() {
   });
 }
 
+// ========= 6. Scroll Reveal 动画 =========
+function setupScrollReveal() {
+  // 选择需要淡入动画的元素（可以按需再加）
+  const selectors = [
+    ".gallery .card",          // 首页作品卡片
+    ".about-text",             // About 文本块
+    ".about-image",            // About 图片
+    ".project-container",      // Film 页主容器
+    ".description-section",    // Film 右侧描述
+    ".media-section",          // Film 左侧媒体
+    ".doc-description",        // Documentary 文本卡片
+    ".doc-top-image",
+    ".doc-bottom-image",
+    ".video-center",           // Documentary 视频区域
+    ".content-section",        // Video editing 页面右侧内容
+    ".video-section-edit"      // Video editing 视频区域
+  ];
+
+  const elements = [];
+
+  selectors.forEach((selector) => {
+    document.querySelectorAll(selector).forEach((el) => {
+      el.classList.add("reveal-on-scroll");
+      elements.push(el);
+    });
+  });
+
+  if (!("IntersectionObserver" in window) || elements.length === 0) {
+    // 兼容性防护：如果观察器不可用，直接全部显示
+    elements.forEach((el) => el.classList.add("reveal-visible"));
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("reveal-visible");
+          obs.unobserve(entry.target); // 只动画一次，避免反复闪动
+        }
+      });
+    },
+    {
+      threshold: 0.2
+    }
+  );
+
+  elements.forEach((el) => observer.observe(el));
+}
+
 // ========= 5. 页面加载完后统一初始化 =========
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -168,5 +218,6 @@ document.addEventListener("DOMContentLoaded", () => {
   setupContactFormValidation();
   setupBackToTopButton();
   setupHeaderScrollEffect();
+  setupScrollReveal();
 });
 

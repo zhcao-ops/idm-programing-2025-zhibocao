@@ -799,3 +799,24 @@ header.scrolled {
 #back-to-top:hover {
   background-color: #400000;
 }
+
+/* === Scroll Reveal 动画基础样式 === */
+
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity 0.6s ease-out,
+    transform 0.6s ease-out;
+}
+
+/* 元素进入视口后添加 .reveal-visible */
+.reveal-on-scroll.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 可以给首页卡片稍微延迟，让感觉更柔和 */
+.gallery .card.reveal-on-scroll {
+  transition-delay: 0.05s;
+}
