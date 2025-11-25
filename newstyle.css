@@ -693,3 +693,47 @@ footer p {
     border: none;
 }
 
+/* ========== Scrolled Header Effect ========== */
+/* 让导航在滚动时有明显变化 */
+header {
+  background-color: #240303;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* 下滑之后的导航样式 */
+header.scrolled {
+  background-color: rgba(10, 0, 0, 0.9); /* 更深一点、带透明 */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.7); /* 加阴影 */
+  backdrop-filter: blur(6px); /* 有毛玻璃效果（支持的浏览器） */
+}
+
+/* Contact 表单错误信息样式 */
+.form-error {
+  background-color: rgba(255, 0, 0, 0.1);
+  color: #ffcccc;
+  border: 1px solid #ff6666;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+/* 回到顶部按钮样式 */
+#back-to-top {
+  position: fixed;
+  right: 20px;
+  bottom: 30px;
+  padding: 8px 12px;
+  background-color: #240303;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+  z-index: 999;
+}
+
+#back-to-top:hover {
+  background-color: #400000;
+}

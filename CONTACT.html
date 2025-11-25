@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact Allen C</title>
   <link rel="stylesheet" href="newstyle.css">
+  <link rel="stylesheet" href="newstyle.css">
+<script src="main.js" defer></script>
+
 </head>
 <body>
   <header>
@@ -24,7 +27,20 @@
     </ul>
 </header>
 
+<!-- interactive script -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const header = document.querySelector('header');
 
+    window.addEventListener('scroll', function () {
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+  });
+</script>
   <section class="contact">
     <div class="contact-overlay">
       <h2>CONTACT ME</h2>
