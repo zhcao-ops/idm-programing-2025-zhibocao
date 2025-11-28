@@ -316,6 +316,44 @@ document.addEventListener("DOMContentLoaded", function() {
     setupScrollReveal(); // animation effects
     
     setupFooterYear(); // date update
+
+    applyVideoSource(); // set video sources
     
     // done initializing everything!
 });
+
+// video library (media urls)
+function constructor(title , url) {
+    this.title = title;
+    this.url = url;
+}
+
+var videoLibrary = [
+    new constructor("Fightboys Trailer", "videos/fightboys_trailer.mp4"),
+    new constructor("Starlight Documentary Clip", "videos/starlight_clip.mp4"),
+    new constructor("Scarlet Witch Fan Edit", "videos/scarlet_witch_edit.mp4")
+];
+
+function applyVideoSource() {
+  var frames = document.querySelectorAll(".video-frame");
+
+  if (frames.length === 0) {
+    return;
+  }
+
+  for (var i = 0; i < frames.length; i++) {
+    var el = frames[i];
+    var id = el.getAttribute("data-video-id");
+
+    var information = videoLibrary[id];
+
+    if (information && information.url) {
+      el.src = information.url;
+
+      if (!el.title) {
+        el.title = information.title;
+      }
+    }
+  }
+}
+
