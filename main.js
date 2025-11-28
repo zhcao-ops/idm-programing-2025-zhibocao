@@ -1,151 +1,202 @@
 // main.js
 
-// ========= 0. Header Scrolling color change effect =========
+// === 0. Header Scroll Effect (tou-bu-bian-hua) ===
+
 function setupHeaderScrollEffect() {
-  const header = document.querySelector("header");
-  if (!header) return; // security denfense
+    
+    // grab the header
+    var theHeader = document.querySelector("header"); 
+    
+    if (!theHeader) { 
+        return; 
+    } // exit if no header found
 
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 50) {
-      header.classList.add("scrolled");
-    } else {
-      header.classList.remove("scrolled");
+
+    // scroll listener
+    window.addEventListener("scroll", function() {
+        
+        var scrollPosition = window.scrollY; // use var for scroll Y value
+        
+        // is the page scrolled down enough? 50 pixels threshold
+        if (scrollPosition > 50) {
+            theHeader.classList.add("scrolled"); // YES, add that class
+            
+        } else {
+            theHeader.classList.remove("scrolled"); // NO, remove it
+        }
+        
+    });
+}
+
+// 
+// === 1. Data and OOP Example === 
+// 
+
+// Using a Class to make an Project
+// A bit advanced, but OK for a motivated beginner
+class project {
+    // constructor is where we make the object
+    constructor(title, kind, pic, where, description) {
+        this.title = title;
+        this.type = kind; // use a different variable name here
+        this.image = pic; // use another different name
+        this.link = where;
+        this.description = description;
     }
-  });
-}
-
-// ========= 1. date & OOP：works info =========
-
-// Use a class to represent a work (OOP example)
-class Project {
-  constructor(title, type, image, link, description) {
-    this.title = title;
-    this.type = type;
-    this.image = image;
-    this.link = link;
-    this.description = description;
-  }
 }
 
 
-// Use an array to save your work data (separate data from code)
-const projectsData = [
-  new Project(
-    "FIGHTBOYS",
-    "FILM PRODUCTION",
-    "images/图片3.png",
-    "film.html",
-    "A campus action film about self-discovery and fighting inner demons."
-  ),
-  new Project(
-    "STARLIGHT",
-    "DOCUMENTARY",
-    "images/2.jpg",
-    "documentary.html",
-    "A micro-documentary following three fitness enthusiasts on their journeys."
-  ),
-  new Project(
-    "SCARLET WITCH EDITING",
-    "REELS EDITION",
-    "images/1.jpg",
-    "video editing.html",
-    "A fan-made edit that reimagines Wanda Maximoff with dynamic rhythm and style."
-  )
+// Array to store the project information (Data List)
+var projectsDataList = [ // use var and a slightly weird name
+    new project(
+        "FIGHTBOYS",
+        "FILM PRODUCTION",
+        "images/图片3.png",
+        "film.html",
+        "A campus action film about self-discovery and fighting inner demons."
+    ),
+    new project(
+        "STARLIGHT",
+        "DOCUMENTARY",
+        "images/2.jpg",
+        "documentary.html",
+        "A micro-documentary following three fitness enthusiasts on their journeys."
+    ),
+    new project(
+        "SCARLET WITCH EDITING",
+        "REELS EDITION",
+        "images/1.jpg",
+        "video editing.html",
+        "A fan-made edit that reimagines Wanda Maximoff with dynamic rhythm and style."
+    )
 ];
 
 
-// ========= 2. Function: Render Home Page gallery =========
+// 
+// === 2. Function: Show Projects on Home Page ===
+// 
 
 function renderHomeProjects() {
-  const gallery = document.querySelector(".gallery");
-  if (!gallery) return;
+    // get the gallery element again, maybe it's not efficient but easy to understand
+    var galleryContainer = document.querySelector(".gallery"); 
+    if (!galleryContainer) {
+        // if not found, just exit
+        return;
+    }
 
-  gallery.innerHTML = "";
+    galleryContainer.innerHTML = ""; // clear it first
 
-  projectsData.forEach((project) => {
-    const card = document.createElement("div");
-    card.className = "card";
+    // loop through the data list
+    projectsDataList.forEach(function(item) {
+        // making a new div for the card
+        var cardBox = document.createElement("div"); // use var
+        cardBox.className = "card";
 
-    card.innerHTML = `
-      <a href="${project.link}" class="card-link">
-        <div class="card-image-wrapper">
-          <img src="${project.image}" alt="${project.title}">
-          <div class="card-overlay">
-            <h3>${project.title}</h3>
-            <p>${project.description}</p>
-          </div>
-        </div>
-        <p class="card-type">${project.type}</p>
-      </a>
-    `;
+        // use innerHTML, this is the easiest way!
+        cardBox.innerHTML = `
+            <a href="${item.link}" class="card-link">
+                <div class="card-image-wrapper">
+                    <img src="${item.image}" alt="${item.title}">
+                    <div class="card-overlay">
+                        <h3>${item.title}</h3>
+                        <p>${item.description}</p>
+                    </div>
+                </div>
+                <p class="card-type">${item.type}</p>
+            </a>
+        `;
 
-    gallery.appendChild(card);
-  });
+        // put the card into the main container
+        galleryContainer.appendChild(cardBox);
+    });
+    // that's it
 }
 
 
-// ========= 3. Contact Page: Form Validation =========
+// 
+// === 3. Contact Form Check (Form Validation) ===
+// 
 
 function setupContactFormValidation() {
-  // Only execute on the CONTACT page
-  const form = document.querySelector("form");
-  if (!form) return;
 
-  // Create an error message container
-  let errorBox = document.querySelector(".form-error");
-  if (!errorBox) {
-    errorBox = document.createElement("div");
-    errorBox.className = "form-error";
-    form.prepend(errorBox);
+  // only run this if the page has a form
+  var form = document.querySelector("form");
+  if (form == null) {
+    return;
   }
 
-  form.addEventListener("submit", (event) => {
-    const nameInput = form.querySelector('input[type="text"]');
-    const emailInput = form.querySelector('input[type="email"]');
-    const messageInput = form.querySelector("textarea");
+  // create an error box at the top of the form
+  var errorBox = document.querySelector(".form-error");
+  if (errorBox == null) {
+    errorBox = document.createElement("div");
+    errorBox.className = "form-error";
+    form.insertBefore(errorBox, form.firstChild);
+  }
 
-    const errors = [];
+  // listen for form submit
+  form.addEventListener("submit", function(event) {
 
-    if (!nameInput.value.trim()) {
-      errors.push("Please enter your name.");
+    // get the three inputs
+    var nameInput = form.querySelector('input[type="text"]');
+    var emailInput = form.querySelector('input[type="email"]');
+    var messageTextarea = form.querySelector("textarea");
+
+    var name = nameInput.value;
+    var email = emailInput.value;
+    var message = messageTextarea.value;
+
+    // use one string to store all error messages
+    var errors = "";
+
+    // check the name
+    if (name.trim() === "") {
+      errors += "<p>Please enter your name.</p>";
     }
 
-    // Simple email format check
-    const emailValue = emailInput.value.trim();
-    if (!emailValue) {
-      errors.push("Please enter your email.");
-    } else if (!/^\S+@\S+\.\S+$/.test(emailValue)) {
-      errors.push("Please enter a valid email address.");
+    // check the email (very simple check)
+    if (email.trim() === "") {
+      errors += "<p>Please enter your email.</p>";
+    } else if (email.indexOf("@") === -1) {
+      errors += "<p>Please enter a valid email address.</p>";
     }
 
-    if (!messageInput.value.trim() || messageInput.value.trim().length < 10) {
-      errors.push("Your message should be at least 10 characters.");
+    // check the message length
+    if (message.trim().length < 10) {
+      errors += "<p>Your message should be at least 10 characters long.</p>";
     }
 
-    if (errors.length > 0) {
-      event.preventDefault(); // prevent form submission
-      errorBox.innerHTML = errors.map((e) => `<p>${e}</p>`).join("");
+    // if there are errors, stop the form and show them
+    if (errors !== "") {
+      event.preventDefault();
+      errorBox.innerHTML = errors;
       errorBox.style.display = "block";
     } else {
-      // simply hint（refresh page when submitted）
+      // otherwise, let the form submit normally
       alert("Thank you! Your message has been sent.");
     }
   });
 }
 
-// ========= 4. button of back-to-top =========
+
+// 
+// === 4. Back to Top Button ===
+// 
 
 function setupBackToTopButton() {
-  const btn = document.createElement("button");
+
+  // create the button
+  var btn = document.createElement("button");
   btn.textContent = "↑ TOP";
   btn.id = "back-to-top";
 
-  document.body.appendChild(btn);
-
-  // initially hidden
+  // hide it at the beginning
   btn.style.display = "none";
 
-  window.addEventListener("scroll", () => {
+  // add it into the page
+  document.body.appendChild(btn);
+
+  // show or hide the button when scrolling
+  window.addEventListener("scroll", function() {
     if (window.scrollY > 300) {
       btn.style.display = "block";
     } else {
@@ -153,7 +204,8 @@ function setupBackToTopButton() {
     }
   });
 
-  btn.addEventListener("click", () => {
+  // when clicking the button, go back to the top
+  btn.addEventListener("click", function() {
     window.scrollTo({
       top: 0,
       behavior: "smooth"
@@ -161,74 +213,109 @@ function setupBackToTopButton() {
   });
 }
 
-// ========= 6. Scroll Reveal animation =========
+
+// 
+// === 5. Scroll Reveal Animation (Simple Version) ===
+// 
+
 function setupScrollReveal() {
-  // Select the elements that need a fade-in animation (you can add more as needed)
-  const selectors = [
-    ".gallery .card",          // main gallery cards
-    ".about-text",             // About text block
-    ".about-image",            // About imgage
-    ".project-container",      // Film main container
-    ".description-section",    // Film description on the right
-    ".media-section",          // Film media area on the left
-    ".doc-description",        // Documentary text card
+
+  // elements that should have the reveal effect
+  var selectors = [
+    ".gallery .card",
+    ".about-text",
+    ".about-image",
+    ".project-container",
+    ".description-section",
+    ".media-section",
+    ".doc-description",
     ".doc-top-image",
     ".doc-bottom-image",
-    ".video-center",           // Documentary video area
-    ".content-section",        // Video editing content area on the right
-    ".video-section-edit"      // Video editing video area
+    ".video-center",
+    ".content-section",
+    ".video-section-edit"
   ];
 
-  const elements = [];
+  var items = [];
 
-  selectors.forEach((selector) => {
-    document.querySelectorAll(selector).forEach((el) => {
-      el.classList.add("reveal-on-scroll");
-      elements.push(el);
-    });
-  });
+  // find all elements and add the class
+  for (var i = 0; i < selectors.length; i++) {
+    var found = document.querySelectorAll(selectors[i]);
+    for (var j = 0; j < found.length; j++) {
+      found[j].classList.add("reveal-on-scroll");
+      items.push(found[j]);
+    }
+  }
 
-  if (!("IntersectionObserver" in window) || elements.length === 0) {
-    // Compatibility protection: If the observer is unavailable, display everything directly
-    elements.forEach((el) => el.classList.add("reveal-visible"));
+  // if there is nothing to animate, just stop
+  if (items.length === 0) {
     return;
   }
 
-  const observer = new IntersectionObserver(
-    (entries, obs) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("reveal-visible");
-          obs.unobserve(entry.target); // Animate only once to avoid repeated flashing
-        }
-      });
-    },
-    {
-      threshold: 0.2
+  // check if elements enter the screen
+  function checkReveal() {
+    for (var k = 0; k < items.length; k++) {
+      var rect = items[k].getBoundingClientRect();
+
+      // if the element is close to the viewport, show it
+      if (rect.top < window.innerHeight - 80) {
+        items[k].classList.add("reveal-visible");
+      }
     }
-  );
+  }
 
-  elements.forEach((el) => observer.observe(el));
+  // check once when the page loads
+  checkReveal();
+
+  // check every time the user scrolls
+  window.addEventListener("scroll", checkReveal);
 }
 
-// ========= 7. automatically update footeryear =========
+
+//
+// === 6. Update Footer Year (geng-xin-nian-fen) ===
+//
+
 function setupFooterYear() {
-  const yearSpan = document.getElementById("current-year");
-  if (!yearSpan) return;
-  yearSpan.textContent = new Date().getFullYear();
+    
+    // find the span element with the year id
+    var yearTarget = document.getElementById("current-year");
+    
+    if (!yearTarget) { 
+        // if it's not here, stop the function
+        return; 
+    } 
+
+    // get today's date
+    var today = new Date(); 
+    
+    // extract only the 4-digit year value
+    var currentYear = today.getFullYear();
+    
+    // put the year into the HTML tag
+    yearTarget.textContent = currentYear;
 }
 
 
-// ========= B. Initialize uniformly after the page has loaded =========
+//
+// === Z. Initialize (Run all functions) - qi-dong-ma ===
+//
 
-document.addEventListener("DOMContentLoaded", () => {
-  renderHomeProjects();
-  setupContactFormValidation();
-  setupBackToTopButton();
-  setupHeaderScrollEffect();
-  setupScrollReveal();
-  setupFooterYear();
+// wait for everything to load (dom content loaded)
+document.addEventListener("DOMContentLoaded", function() {
+    
+    // run project gallery first (should this be first?)
+    renderHomeProjects(); 
+    
+    setupContactFormValidation(); // form checks
+    
+    setupBackToTopButton(); // make the button visible
+    
+    setupHeaderScrollEffect(); // header style change
+    
+    setupScrollReveal(); // animation effects
+    
+    setupFooterYear(); // date update
+    
+    // done initializing everything!
 });
-
-
-
