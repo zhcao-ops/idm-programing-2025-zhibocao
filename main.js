@@ -318,6 +318,8 @@ document.addEventListener("DOMContentLoaded", function() {
     setupFooterYear(); // date update
 
     applyVideoSource(); // set video sources
+
+    applyImageSource(); // set image sources
     
     // done initializing everything!
 });
@@ -353,6 +355,39 @@ function applyVideoSource() {
       if (!el.title) {
         el.title = information.title;
       }
+    }
+  }
+}
+
+var imageLibrary = [
+    fightboysStill1, "images/stills1.png",
+  fightboysStill2, "images/图片8.png",
+  fightboysStill3, "images/图片9.png",
+  fightboysStill4, "images/图片10.png",
+
+  starlightPoster, "images/POSTER.jpg",
+  starlightCharacters,"images/CHARACTERS.jpg",
+
+  scarletMain, "images/1.jpg",
+
+  aboutPhoto, "images/图片1.jpg"
+
+];
+
+function applyImageSource() {
+  var images = document.querySelectorAll(".dynamic-image");
+
+  if (images.length === 0) {
+    return;
+  }
+  for (var i = 0; i < images.length; i++) {
+    var el = images[i];
+    var id = el.getAttribute("data-image-key");
+
+    var imageUrl = imageLibrary[id];
+
+    if (src) {
+      el.src = imageUrl;
     }
   }
 }
