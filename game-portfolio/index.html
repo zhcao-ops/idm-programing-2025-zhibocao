@@ -1,0 +1,820 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Game-related Projects Portfolio</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #10100f;
+        --paper: #f7f6f2;
+        --ink: #10100f;
+        --text: #f7f6f2;
+        --muted: rgba(247, 246, 242, 0.62);
+        --line: rgba(247, 246, 242, 0.12);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", "Microsoft YaHei", sans-serif;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      button {
+        font: inherit;
+      }
+
+      .page {
+        max-width: 1500px;
+        margin: 0 auto;
+        padding: 24px 20px 40px;
+      }
+
+      .hero {
+        border-bottom: 1px solid var(--line);
+        padding-bottom: 40px;
+      }
+
+      .hero-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+      }
+
+      .eyebrow {
+        margin: 0 0 20px;
+        color: rgba(247, 246, 242, 0.45);
+        font-size: 12px;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin: 0;
+      }
+
+      h1 {
+        max-width: 760px;
+        font-size: clamp(42px, 7vw, 96px);
+        line-height: 1.02;
+        font-weight: 650;
+      }
+
+      .subtitle {
+        max-width: 680px;
+        margin-top: 20px;
+        color: var(--muted);
+        font-size: 18px;
+        line-height: 1.8;
+      }
+
+      .intro-panel {
+        display: flex;
+        max-width: 560px;
+        flex-direction: column;
+        gap: 24px;
+      }
+
+      .toggle {
+        display: inline-flex;
+        width: max-content;
+        align-items: center;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.08);
+        padding: 4px;
+      }
+
+      .toggle button {
+        cursor: pointer;
+        border: 0;
+        border-radius: 999px;
+        background: transparent;
+        color: rgba(247, 246, 242, 0.58);
+        padding: 8px 16px;
+        transition: 180ms ease;
+      }
+
+      .toggle button.active {
+        background: var(--paper);
+        color: var(--ink);
+      }
+
+      .intro {
+        color: rgba(247, 246, 242, 0.56);
+        font-size: 14px;
+        line-height: 2;
+      }
+
+      .jump-list {
+        display: grid;
+        gap: 12px;
+        margin-top: 40px;
+      }
+
+      .jump {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border: 1px solid rgba(247, 246, 242, 0.1);
+        background: rgba(255, 255, 255, 0.03);
+        padding: 14px 16px;
+        color: rgba(247, 246, 242, 0.72);
+        font-size: 14px;
+        transition: 180ms ease;
+      }
+
+      .jump:hover {
+        background: rgba(255, 255, 255, 0.07);
+      }
+
+      .jump-title {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: var(--accent);
+      }
+
+      .jump-id {
+        color: rgba(247, 246, 242, 0.35);
+      }
+
+      main {
+        border-top: 0;
+      }
+
+      .project {
+        display: grid;
+        gap: 40px;
+        border-bottom: 1px solid var(--line);
+        padding: 56px 0;
+      }
+
+      .project:last-child {
+        border-bottom: 0;
+      }
+
+      .visual-meta {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 16px;
+      }
+
+      .source {
+        margin-bottom: 8px;
+        color: rgba(247, 246, 242, 0.34);
+        font-size: 12px;
+        letter-spacing: 0.24em;
+        text-transform: uppercase;
+      }
+
+      .visual-label {
+        color: rgba(247, 246, 242, 0.7);
+        font-size: 14px;
+      }
+
+      .project-id {
+        border: 1px solid color-mix(in srgb, var(--accent) 55%, transparent);
+        padding: 6px 12px;
+        color: rgba(247, 246, 242, 0.72);
+        font-size: 12px;
+      }
+
+      .visual-board {
+        border: 1px solid color-mix(in srgb, var(--accent) 28%, transparent);
+        background: rgba(255, 255, 255, 0.035);
+        padding: 12px;
+        box-shadow: 0 24px 70px rgba(0, 0, 0, 0.22);
+      }
+
+      .main-image {
+        overflow: hidden;
+        background: #171615;
+      }
+
+      .main-image.scene {
+        aspect-ratio: 16 / 9;
+      }
+
+      .main-image.document {
+        aspect-ratio: 4 / 3;
+      }
+
+      .main-image img,
+      .detail-image img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        transition: transform 500ms ease;
+      }
+
+      .main-image:hover img,
+      .detail-image:hover img {
+        transform: scale(1.015);
+      }
+
+      .scene img {
+        object-fit: cover;
+      }
+
+      .document img {
+        object-fit: contain;
+        padding: 16px;
+      }
+
+      .image-row {
+        display: grid;
+        gap: 12px;
+        margin-top: 12px;
+      }
+
+      .detail-image {
+        min-height: 220px;
+        overflow: hidden;
+        background: #171615;
+      }
+
+      .image-row.with-gallery .focus-card {
+        min-height: 180px;
+      }
+
+      .focus-card {
+        display: flex;
+        min-height: 220px;
+        flex-direction: column;
+        justify-content: space-between;
+        border: 1px solid var(--accent);
+        background: var(--paper);
+        color: var(--ink);
+        padding: 20px;
+      }
+
+      .focus-card .label {
+        color: rgba(16, 16, 15, 0.45);
+        font-size: 11px;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+      }
+
+      .focus-card p {
+        margin-top: 32px;
+        color: rgba(16, 16, 15, 0.72);
+        font-size: 14px;
+        line-height: 1.9;
+      }
+
+      .accent-bar {
+        display: block;
+        width: 64px;
+        height: 4px;
+        margin-top: 24px;
+        background: var(--accent);
+      }
+
+      .content {
+        min-width: 0;
+      }
+
+      .type-row {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 24px;
+      }
+
+      .type-row .dot {
+        width: 12px;
+        height: 12px;
+      }
+
+      .type {
+        color: rgba(247, 246, 242, 0.38);
+        font-size: 12px;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+      }
+
+      h2 {
+        font-size: clamp(32px, 4vw, 56px);
+        line-height: 1.1;
+        font-weight: 650;
+      }
+
+      .project-subtitle {
+        margin-top: 16px;
+        color: rgba(247, 246, 242, 0.45);
+        font-size: 14px;
+        line-height: 1.9;
+      }
+
+      .overview {
+        max-width: 760px;
+        margin-top: 28px;
+        color: rgba(247, 246, 242, 0.72);
+        font-size: 18px;
+        line-height: 1.85;
+      }
+
+      .project-link {
+        display: inline-flex;
+        gap: 8px;
+        margin-top: 28px;
+        border-bottom: 1px solid rgba(247, 246, 242, 0.6);
+        padding-bottom: 4px;
+        color: var(--text);
+        font-size: 14px;
+        transition: 180ms ease;
+      }
+
+      .project-link:hover {
+        border-color: var(--text);
+        color: rgba(247, 246, 242, 0.72);
+      }
+
+      .columns {
+        display: grid;
+        gap: 32px;
+        margin-top: 40px;
+      }
+
+      h3 {
+        margin-bottom: 20px;
+        color: rgba(247, 246, 242, 0.38);
+        font-size: 12px;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+      }
+
+      .line-list {
+        display: grid;
+        gap: 16px;
+      }
+
+      .line-list p {
+        border-left: 1px solid rgba(247, 246, 242, 0.14);
+        padding-left: 16px;
+        color: rgba(247, 246, 242, 0.68);
+        font-size: 14px;
+        line-height: 2;
+      }
+
+      .line-list.contribution p {
+        border-left-color: color-mix(in srgb, var(--accent) 45%, transparent);
+      }
+
+      .keywords {
+        margin-top: 40px;
+      }
+
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .tag {
+        border: 1px solid rgba(247, 246, 242, 0.12);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.04);
+        padding: 8px 16px;
+        color: rgba(247, 246, 242, 0.7);
+        font-size: 14px;
+      }
+
+      @media (min-width: 760px) {
+        .page {
+          padding: 40px 40px 56px;
+        }
+
+        .hero {
+          padding-bottom: 56px;
+        }
+
+        .jump-list {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .image-row {
+          grid-template-columns: 0.58fr 0.42fr;
+        }
+
+        .image-row.with-gallery {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .image-row.with-gallery .focus-card {
+          grid-column: 1 / -1;
+        }
+
+        .columns {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (min-width: 1060px) {
+        .hero-grid {
+          flex-direction: row;
+          align-items: flex-end;
+          justify-content: space-between;
+        }
+
+        .intro-panel {
+          align-items: flex-end;
+        }
+
+        .intro {
+          text-align: right;
+        }
+
+        .project {
+          grid-template-columns: minmax(0, 0.98fr) minmax(0, 1.02fr);
+          gap: 56px;
+          padding: 80px 0;
+        }
+
+        .project.reversed .visual {
+          order: 2;
+        }
+
+        .project.reversed .content {
+          order: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header class="hero">
+        <div class="hero-grid">
+          <div>
+            <p class="eyebrow" data-i18n="tag">项目补充页</p>
+            <h1 data-i18n="title">游戏相关项目</h1>
+            <p class="subtitle" data-i18n="subtitle">
+              Allen Zhibo Cao的游戏作品集
+            </p>
+          </div>
+
+          <div class="intro-panel">
+            <div class="toggle" aria-label="Language">
+              <button class="active" data-lang="zh">中文</button>
+              <button data-lang="en">EN</button>
+            </div>
+            <p class="intro" data-i18n="intro">
+              本页聚焦与游戏设计、互动叙事和分析写作相关的课程项目，用于补充简历中无法完整展开的项目内容、具体贡献与设计思考。
+            </p>
+          </div>
+        </div>
+
+        <nav class="jump-list" id="jumpList" aria-label="Projects"></nav>
+      </header>
+
+      <main id="projects"></main>
+    </div>
+
+    <script>
+      const copy = {
+        zh: {
+          tag: "项目补充页",
+          title: "游戏相关项目",
+          subtitle: "Allen Zhibo Cao的游戏作品集",
+          intro:
+            "本页聚焦与游戏设计、互动叙事和分析写作相关的课程项目，用于补充简历中无法完整展开的项目内容、具体贡献与设计思考。",
+          viewLink: "查看项目链接",
+          contribution: "我的工作",
+          highlights: "项目亮点",
+          keywords: "关键词",
+          projects: [
+            {
+              id: "01",
+              title: "Red Table Society",
+              type: "Game Design Document",
+              subtitle: "叙事模拟 / 系统设计 / 团队协作",
+              overview:
+                "《Red Table Society》是一款设定在大学校园中的单人叙事模拟游戏。项目围绕 “Communism” 与 “Romance” 两大主题展开，通过 Cooking、Trade、Guessing 三个核心机制，将食物分配、秘密交易与人际判断转化为兼具政治性与情感张力的玩家体验。",
+              contribution: [
+                "我提出了游戏的灵感与核心概念，帮助确立项目最初的整体方向。",
+                "我负责撰写 Game Design Document 的第 1–5 章内容，包括游戏概述、核心体验、题材类型、目标用户、平台与世界观等关键框架。",
+                "我重点参与了游戏主题冲突的构建，即“集体主义秩序”与“私人情感关系”之间的矛盾表达。",
+                "在团队合作中，我参与了前期概念搭建，以及后续玩法逻辑与叙事表达的统一整理，使项目在概念、系统与叙事之间保持较强一致性。"
+              ],
+              highlights: [
+                "以“校园食堂共同体”为叙事中心，建立了具有政治隐喻与情感风险的世界观。",
+                "通过 Cooking、Trade、Guessing 三个机制，把资源管理、地下交换与信息判断整合为统一体验。",
+                "设计了 Trust、Suspicion、Affection、Hidden Reserves、Favor Debt 等变量系统，强化长期后果感。",
+                "构建了从日常劳动到政治审查逐渐升级的叙事推进逻辑，使玩家在日常选择中感受到压力与代价。"
+              ],
+              tags: ["概念设计", "GDD撰写", "叙事结构", "系统思维", "团队协作"]
+            },
+            {
+              id: "02",
+              title: "Eternity",
+              type: "Twine Interactive Narrative",
+              subtitle: "互动叙事 / 分支结构 / 情绪节奏",
+              overview:
+                "《Eternity》是一款使用 Twine 制作的互动叙事作品。我围绕女性主角 Elizabeth 的人生抉择，设计了带有分支与后果的叙事结构，通过文本选择、情绪铺垫与多结局表达，探讨关系、压力、偏见与个人成长等主题。",
+              contribution: [
+                "我独立完成了故事框架、角色关系、分支节点与多结局逻辑设计。",
+                "我使用 Twine（Harlowe）搭建互动结构，并将线性剧本转化为玩家可选择的 passage-based 体验。",
+                "我通过 HTML、CSS 和 JavaScript 对页面表现进行了定制，包括背景切换、排版呈现与音乐连续性等。",
+                "我在叙事设计中重点考虑“选择频率”和“选择重量”的平衡，希望每一次选择都具有明确的情感意义。"
+              ],
+              highlights: [
+                "通过互动结构强化角色视角与玩家代入感，而不是只做普通文字分支。",
+                "围绕偏见、情感关系与社会压力设置关键节点，使选择具有主题性而非纯功能性。",
+                "结合图片、音乐与节奏控制，让叙事体验更接近完整的数字叙事作品。",
+                "完成了从故事写作、交互结构到网页发布的完整闭环。"
+              ],
+              tags: ["Twine", "互动叙事", "分支设计", "HTML/CSS/JS", "叙事体验"],
+              link: "https://allencforreal.itch.io/eternity"
+            },
+            {
+              id: "03",
+              title: "1943: The Battle of Midway",
+              type: "Game Analysis Essay",
+              subtitle: "街机研究 / 机制分析 / 体验批评",
+              overview:
+                "这是我围绕 Capcom 经典街机作品《1943: The Battle of Midway》完成的一篇游戏分析文章。我从 Story、Technology、Aesthetics 和 Mechanics 四个维度切入，研究这款作品如何通过节奏、反馈、视觉与风险收益关系，构建出持续紧张而令人上瘾的街机体验。",
+              contribution: [
+                "我从玩家体验与客观设计两个角度，对该作品进行了结构化分析。",
+                "我重点关注了游戏在最小叙事框架下如何制造推进感，以及其节奏设计如何服务沉浸和张力。",
+                "我分析了能量条、特殊攻击、音效层次与视觉反馈如何共同塑造“生存压力”与“流畅感”。"
+              ],
+              highlights: [
+                "讨论了极简叙事如何通过关卡推进与敌人设计产生“战役感”。",
+                "分析了多层滚动背景、音效节奏与爆炸反馈如何共同强化感官体验。",
+                "从资源管理与风险收益的角度解释了游戏为什么具有高度成瘾性。",
+                "将街机游戏的即时反馈机制与玩家心理状态联系起来，体现了设计分析能力。"
+              ],
+              tags: ["游戏分析", "街机设计", "机制研究", "玩家体验", "审美分析"]
+            }
+          ]
+        },
+        en: {
+          tag: "Project Supplement",
+          title: "Game-related Projects",
+          subtitle: "Allen Zhibo Cao's Game Portfolio",
+          intro:
+            "This page focuses on selected academic projects related to game design, interactive narrative, and analytical writing, serving as an extension of the CV.",
+          viewLink: "View project link",
+          contribution: "My Contribution",
+          highlights: "Highlights",
+          keywords: "Keywords",
+          projects: [
+            {
+              id: "01",
+              title: "Red Table Society",
+              type: "Game Design Document",
+              subtitle: "Narrative simulation / systems design / team collaboration",
+              overview:
+                "Red Table Society is a single-player narrative simulation game set in a university campus. Built around the themes of Communism and Romance, the project combines Cooking, Trade, and Guessing to transform food allocation, underground exchange, and interpersonal judgement into a politically and emotionally charged player experience.",
+              contribution: [
+                "I proposed the original concept and helped define the project’s initial direction.",
+                "I wrote Chapters 1–5 of the Game Design Document, including game overview, player experience, genre, target audience, platform, and worldbuilding.",
+                "I played a key role in shaping the central thematic conflict between collectivist order and private affection.",
+                "Within the team workflow, I contributed to aligning concept, system logic, and narrative expression."
+              ],
+              highlights: [
+                "Built a campus-centred world with political metaphor and emotional risk.",
+                "Integrated Cooking, Trade, and Guessing into one unified gameplay framework.",
+                "Designed variables such as Trust, Suspicion, Affection, Hidden Reserves, and Favor Debt.",
+                "Created a progression structure in which everyday choices return later as pressure and consequences."
+              ],
+              tags: ["Concept Design", "GDD", "Narrative", "Systems Thinking", "Teamwork"]
+            },
+            {
+              id: "02",
+              title: "Eternity",
+              type: "Twine Interactive Narrative",
+              subtitle: "Interactive narrative / branching structure / emotional pacing",
+              overview:
+                "Eternity is an interactive narrative project built in Twine. Centred on the life decisions of a female protagonist, the work uses branching choices and multiple endings to explore relationships, pressure, prejudice, and personal growth.",
+              contribution: [
+                "I independently designed the story structure, character relationships, branching nodes, and ending logic.",
+                "I built the interactive structure in Twine and translated a linear script into a passage-based interactive experience.",
+                "I customised presentation through HTML, CSS, and JavaScript, including background switching, layout, and music continuity.",
+                "I carefully balanced the frequency of choices and their emotional weight."
+              ],
+              highlights: [
+                "Used interactivity to strengthen player identification and point-of-view immersion.",
+                "Built key decision nodes around prejudice, emotional tension, and social pressure.",
+                "Combined images, music, and rhythm to shape a more complete digital narrative experience.",
+                "Completed the full process from story writing and interaction design to web publishing."
+              ],
+              tags: ["Twine", "Interactive Narrative", "Branching Design", "HTML/CSS/JS", "Narrative Experience"],
+              link: "https://allencforreal.itch.io/eternity"
+            },
+            {
+              id: "03",
+              title: "1943: The Battle of Midway",
+              type: "Game Analysis Essay",
+              subtitle: "Arcade study / mechanics analysis / experiential critique",
+              overview:
+                "This essay analyses Capcom’s classic arcade game 1943: The Battle of Midway through Story, Technology, Aesthetics, and Mechanics, focusing on how rhythm, feedback, visuals, and risk-reward relationships shape a tense and addictive arcade experience.",
+              contribution: [
+                "I analysed the work from both player experience and objective design perspectives.",
+                "I focused on how the game creates momentum through minimal narrative framing, and how pacing supports immersion and tension.",
+                "I examined how the energy bar, special attacks, sound layers, and visual feedback collectively shape survival pressure and flow."
+              ],
+              highlights: [
+                "Explored how minimal narrative still produces a campaign-like sense of progression.",
+                "Analysed how parallax visuals, sound rhythm, and explosion feedback reinforce sensory intensity.",
+                "Explained the game’s addictiveness through resource management and risk-reward structure.",
+                "Connected instantaneous arcade feedback with player psychology and flow."
+              ],
+              tags: ["Game Analysis", "Arcade Design", "Mechanics", "Player Experience", "Aesthetics"]
+            }
+          ]
+        }
+      };
+
+      const visuals = {
+        "01": {
+          accent: "#c53a32",
+          mode: "document",
+          images: ["project-assets/red-table-cover.png", "project-assets/red-table-detail.png"],
+          zh: ["本地作品图 / GDD 素材", "概念场景与玩法道具"],
+          en: ["Local work images / GDD assets", "Concept scene and gameplay props"],
+          focus: {
+            zh: "校园食堂、配给、交易与审查，把亲密关系放进一套会反噬玩家的规则里。",
+            en: "A campus canteen, rationing, trade, and surveillance turn affection into a rule system that pushes back."
+          }
+        },
+        "02": {
+          accent: "#6ea4ff",
+          mode: "scene",
+          images: [
+            "project-assets/eternity-original-1.png",
+            "project-assets/eternity-island-ending.png",
+            "project-assets/eternity-rain-branch.png"
+          ],
+          zh: ["Twine 原始视觉素材", "开场屋顶 / 结局场景"],
+          en: ["Original Twine visual assets", "Opening rooftop / ending scenes"],
+          focus: {
+            zh: "用 Twine 做人生分岔，不追求选择数量，而是让每个节点承担情绪和后果。",
+            en: "A Twine life story built around fewer but heavier choices, where each branch carries emotion and consequence."
+          }
+        },
+        "03": {
+          accent: "#61c6a8",
+          mode: "document",
+          images: ["project-assets/1943-hero.png", "project-assets/1943-detail.png"],
+          zh: ["1943 游戏分析", "机制、节奏与体验拆解"],
+          en: ["1943 Game Analysis", "Mechanics, pacing, and player experience"],
+          focus: {
+            zh: "从街机节奏、反馈、资源压力切入，拆解为什么简单循环能持续让人投入。",
+            en: "An arcade reading of rhythm, feedback, and resource pressure, asking why a simple loop stays compelling."
+          }
+        }
+      };
+
+      let lang = "zh";
+
+      function setText() {
+        document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
+        document.querySelectorAll("[data-i18n]").forEach((el) => {
+          el.textContent = copy[lang][el.dataset.i18n];
+        });
+        document.querySelectorAll("[data-lang]").forEach((button) => {
+          button.classList.toggle("active", button.dataset.lang === lang);
+        });
+      }
+
+      function render() {
+        setText();
+        const jumpList = document.getElementById("jumpList");
+        const projects = document.getElementById("projects");
+        jumpList.innerHTML = "";
+        projects.innerHTML = "";
+
+        copy[lang].projects.forEach((project, index) => {
+          const visual = visuals[project.id];
+          const [sourceLabel, visualLabel] = visual[lang];
+          const extraImage = visual.images[2]
+            ? `
+                  <div class="detail-image ${visual.mode}">
+                    <img src="${visual.images[2]}" alt="${project.title} scene" loading="lazy" />
+                  </div>
+                `
+            : "";
+
+          const jump = document.createElement("a");
+          jump.className = "jump";
+          jump.href = `#project-${project.id}`;
+          jump.style.setProperty("--accent", visual.accent);
+          jump.innerHTML = `
+            <span class="jump-title"><span class="dot"></span><span>${project.title}</span></span>
+            <span class="jump-id">${project.id}</span>
+          `;
+          jumpList.appendChild(jump);
+
+          const section = document.createElement("section");
+          section.id = `project-${project.id}`;
+          section.className = `project ${index % 2 === 1 ? "reversed" : ""}`;
+          section.style.setProperty("--accent", visual.accent);
+          section.innerHTML = `
+            <div class="visual">
+              <div class="visual-meta">
+                <div>
+                  <p class="source">${sourceLabel}</p>
+                  <p class="visual-label">${visualLabel}</p>
+                </div>
+                <span class="project-id">${project.id}</span>
+              </div>
+              <div class="visual-board">
+                <div class="main-image ${visual.mode}">
+                  <img src="${visual.images[0]}" alt="${project.title}" loading="lazy" />
+                </div>
+                <div class="image-row ${visual.images[2] ? "with-gallery" : ""}">
+                  <div class="detail-image ${visual.mode}">
+                    <img src="${visual.images[1]}" alt="${project.title} detail" loading="lazy" />
+                  </div>
+                  ${extraImage}
+                  <div class="focus-card">
+                    <div>
+                      <span class="label">Project Focus</span>
+                      <p>${visual.focus[lang]}</p>
+                    </div>
+                    <span class="accent-bar"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="content">
+              <div class="type-row">
+                <span class="dot"></span>
+                <span class="type">${project.type}</span>
+              </div>
+              <h2>${project.title}</h2>
+              <p class="project-subtitle">${project.subtitle}</p>
+              <p class="overview">${project.overview}</p>
+              ${
+                project.link
+                  ? `<a class="project-link" href="${project.link}" target="_blank" rel="noreferrer">${copy[lang].viewLink} ↗</a>`
+                  : ""
+              }
+              <div class="columns">
+                <div>
+                  <h3>${copy[lang].contribution}</h3>
+                  <div class="line-list contribution">
+                    ${project.contribution.map((item) => `<p>${item}</p>`).join("")}
+                  </div>
+                </div>
+                <div>
+                  <h3>${copy[lang].highlights}</h3>
+                  <div class="line-list">
+                    ${project.highlights.map((item) => `<p>${item}</p>`).join("")}
+                  </div>
+                </div>
+              </div>
+              <div class="keywords">
+                <h3>${copy[lang].keywords}</h3>
+                <div class="tags">
+                  ${project.tags.map((tag) => `<span class="tag">${tag}</span>`).join("")}
+                </div>
+              </div>
+            </div>
+          `;
+          projects.appendChild(section);
+        });
+      }
+
+      document.querySelectorAll("[data-lang]").forEach((button) => {
+        button.addEventListener("click", () => {
+          lang = button.dataset.lang;
+          render();
+        });
+      });
+
+      render();
+    </script>
+  </body>
+</html>
