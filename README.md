@@ -46,7 +46,9 @@ This project demonstrates front-end layout, navigation structure, HTML/CSS page 
 
 ## Collaboration Projects
 
-Two team collaboration repositories can be added here once their GitHub links are available. For HR presentation, the best options are:
+Two team collaboration repositories can be added here once their GitHub links are available. See [GitHub-HR-Setup.md](GitHub-HR-Setup.md) for the recommended profile, pinning, fork, and case-study setup.
+
+For HR presentation, the best options are:
 
 - Pin the team repositories on the GitHub profile if they are public and GitHub recognizes Allen as a contributor.
 - Fork the repositories into `zhcao-ops` and clearly credit the original team repository.
