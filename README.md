@@ -46,7 +46,12 @@ This project demonstrates front-end layout, navigation structure, HTML/CSS page 
 
 ## Collaboration Projects
 
-Two team collaboration repositories can be added here once their GitHub links are available. See [GitHub-HR-Setup.md](GitHub-HR-Setup.md) for the recommended profile, pinning, fork, and case-study setup.
+Two team collaboration repositories are documented in [TEAM-PROJECTS.md](TEAM-PROJECTS.md):
+
+- [Upthrift](https://github.com/sheriglady-sg/Upthrift_Programming_Group-7): full-stack second-hand marketplace with Node.js, Express, MySQL, EJS, Socket.IO messaging, authentication, uploads, reviews, events, and notifications.
+- [Da Bao'en Porcelain Tower](https://github.com/Kewusir/Da-Bao-en-Porcelain-Tower): cultural heritage website with multi-page historical storytelling, multilingual JavaScript content, image interactions, visitor experience pages, and 3D/model assets.
+
+See [GitHub-HR-Setup.md](GitHub-HR-Setup.md) for the recommended profile, pinning, fork, and case-study setup.
 
 For HR presentation, the best options are:
 

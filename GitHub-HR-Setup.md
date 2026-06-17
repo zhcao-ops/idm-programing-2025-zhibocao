@@ -12,6 +12,7 @@ Important paths:
 
 - `README.md`: main repository introduction.
 - `game-portfolio/`: game portfolio website, PDFs, and visual assets.
+- `TEAM-PROJECTS.md`: public links and summaries for the two team collaboration repositories.
 - `PROFILE-README-DRAFT.md`: profile README text to copy into the GitHub profile repository.
 
 ## 2. Enable GitHub Pages
@@ -101,4 +102,3 @@ Once the profile README and pins are ready, share:
 If GitHub Pages is enabled, also share:
 
 `https://zhcao-ops.github.io/idm-programing-2025-zhibocao/game-portfolio/`
-

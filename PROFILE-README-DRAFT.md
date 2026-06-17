@@ -19,23 +19,20 @@ A visual media portfolio website built with HTML, CSS, and JavaScript, including
 
 ## Team Collaboration Projects
 
-Add the two team project links here:
+### Upthrift
 
-```md
-### Team Project 1
-- Role:
-- Main contribution:
-- Repository:
-- Result:
+Collaborative full-stack second-hand marketplace project using Node.js, Express, MySQL, EJS, Socket.IO, authentication, uploads, reviews, events, real-time messaging, and notifications.
 
-### Team Project 2
-- Role:
-- Main contribution:
-- Repository:
-- Result:
-```
+- Repository: [sheriglady-sg/Upthrift_Programming_Group-7](https://github.com/sheriglady-sg/Upthrift_Programming_Group-7)
+- Portfolio note: shows experience working with a larger team web application rather than only static pages.
+
+### Da Bao'en Porcelain Tower
+
+Collaborative cultural heritage website with multi-page historical storytelling, multilingual JavaScript content, image interactions, visitor experience pages, and 3D/model assets.
+
+- Repository: [Kewusir/Da-Bao-en-Porcelain-Tower](https://github.com/Kewusir/Da-Bao-en-Porcelain-Tower)
+- Portfolio note: shows front-end storytelling, cultural content organization, and interactive web presentation.
 
 ## Skills
 
 `HTML` `CSS` `JavaScript` `Twine` `Game Design Documentation` `Interactive Narrative` `Game Analysis` `Visual Storytelling`
-
